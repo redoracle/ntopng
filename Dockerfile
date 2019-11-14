@@ -56,4 +56,4 @@ RUN set -x \
 
 EXPOSE 3000 2055
 
-ENTRYPOINT ["/tmp/run.sh"]
+#ENTRYPOINT ["/tmp/run.sh"]
