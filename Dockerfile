@@ -49,7 +49,6 @@ RUN set -x \
     && rm -rf /var/tmp/* \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir -p /var/lib/ntopng \
-    && useradd ntopng \
     && chown ntopng:ntopng /var/lib/ntopng \
     && echo '#!/usr/bin/env bash\n/etc/init.d/redis-server start && ntopng "$@"' > /tmp/run.sh \
     && chmod +x /tmp/run.sh
