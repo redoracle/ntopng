@@ -3,7 +3,7 @@ FROM ubuntu:latest
 MAINTAINER RedOracle
 
 # Pass --build-arg TZ=<YOUR_TZ> when running docker build to override this.
-ARG TZ=America/Los_Angeles
+ARG TZ=Europe/Amsterdam
 ARG BUILD_DATE
 ARG VERSION
 ARG VCS_URL
