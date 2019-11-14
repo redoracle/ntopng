@@ -1,5 +1,5 @@
 # based on ubuntu 16.04 to run below's commands
-FROM ubuntu:18.0
+FROM ubuntu:latest
 MAINTAINER RedOracle
 
 # Pass --build-arg TZ=<YOUR_TZ> when running docker build to override this.
