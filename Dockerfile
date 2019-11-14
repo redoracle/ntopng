@@ -1,6 +1,6 @@
 # based on ubuntu 16.04 to run below's commands
 FROM ubuntu:latest
-MAINTAINER RedOracle
+MAINTAINER RedOracle <info@redoracle.com>
 
 # Pass --build-arg TZ=<YOUR_TZ> when running docker build to override this.
 ARG TZ=Europe/Amsterdam
@@ -8,8 +8,6 @@ ARG BUILD_DATE
 ARG VERSION
 ARG VCS_URL
 ARG VCS_REF
-
-
 
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url=$VCS_URL \
@@ -43,17 +41,17 @@ RUN set -x \
     && wget -O apt-ntop-stable.deb http://apt-stable.ntop.org/18.04/all/apt-ntop-stable.deb \
     && dpkg -i apt-ntop-stable.deb && rm -f apt-ntop-stable.deb \
     && apt-get update && apt-get -y install ntopng \
-    && apt-get install --no-install-recommends --no-install-suggests -y -q pfring nprobe ntopng libndpi-bin libndpi-wireshark ntopng-data \
+    && apt-get install --no-install-recommends --no-install-suggests -y -q vim pfring nprobe ntopng libndpi-bin libndpi-wireshark ntopng-data \
     && apt-get clean \
     && rm -rf /tmp/* \
     && rm -rf /var/tmp/* \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir -p /var/lib/ntopng \
     && chown ntopng:ntopng /var/lib/ntopng \
-    && echo '#!/usr/bin/env bash\n/etc/init.d/redis-server start && ntopng "$@"' > /tmp/run.sh \
+    && echo '#!/usr/bin/env bash\n/usr/bin/redis-server - < /etc/redis/redis.conf && /usr/local/bin/ntopng "$@" &' > /tmp/run.sh \
     && chmod +x /tmp/run.sh
 
 
 EXPOSE 3000 2055
 
-#ENTRYPOINT ["/tmp/run.sh"]
+ENTRYPOINT ["/tmp/run.sh"]
