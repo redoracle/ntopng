@@ -52,6 +52,6 @@ RUN set -x \
     && chmod +x /tmp/run.sh
 
 
-EXPOSE 3000 2055
+#EXPOSE 3000 2055
 
-ENTRYPOINT ["/tmp/run.sh"]
+#ENTRYPOINT ["/tmp/run.sh"]
