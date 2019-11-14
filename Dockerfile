@@ -21,4 +21,5 @@ RUN  \
   && useradd ntopng \
   && chown ntopng:ntopng /var/lib/ntopng
 
+
 EXPOSE 3000 2055
